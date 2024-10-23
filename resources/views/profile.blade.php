@@ -11,22 +11,19 @@
 <script>
     $(document).ready(function () {
         $('#uploadForm').on('submit', function (e) {
-            e.preventDefault(); // Prevent the form from submitting via the browser
-
+            e.preventDefault(); 
             var formData = new FormData(this); // Get form data, including the file
 
             $.ajax({
-                url: '{{ route("profile.upload") }}', // The route to handle file upload
+                url: '{{ route("profile.upload") }}', 
                 type: 'POST',
                 data: formData,
-                processData: false, // Prevent jQuery from processing the data
-                contentType: false, // Prevent jQuery from setting the content type
+                processData: false, 
+                contentType: false, 
                 success: function (response) {
-                    // Show success message
                     $('#uploadMessage').html('<p>Profile picture uploaded successfully!</p>');
                 },
                 error: function (xhr) {
-                    // Show error message
                     $('#uploadMessage').html('<p>Failed to upload picture. Please try again.</p>');
                 }
             });
